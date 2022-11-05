@@ -19,6 +19,8 @@ export const authOptions = {
     maxAge: 60 * 60 * 24 * 30
   },
   callbacks: {
+    // for some reasons the account is alway undefined so I could not get the actual token
+    // I found some comments also on StackOverflow with the same problem but no resolution yet
     async jwt({ token, account, profile }) {
       token.account = account;
       return token;

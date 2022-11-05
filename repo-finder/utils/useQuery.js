@@ -1,3 +1,4 @@
+// I think there could be a better way to create this but I could not find any (for the moment)
 export default function useQuery(owner, repo, queryType, cursor = "") {
   switch (queryType) {
     case "first":

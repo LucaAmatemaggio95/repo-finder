@@ -11,6 +11,7 @@ const FinderPage = () => {
   const { status } = useSession({
     required: true,
     onUnauthenticated() {
+      // if the user is not authenticated push it back to home
       router.push("/");
     }
   });

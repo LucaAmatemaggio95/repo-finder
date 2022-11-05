@@ -1,39 +1,36 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Stack,
-  TextField,
-  Toolbar,
-  Typography
-} from "@mui/material";
+import { Box, Grid } from "@mui/material";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import React from "react";
+import RepoDetail from "../../components/RepoDetail/RepoDetail";
+import SearchCard from "../../components/SearchCard/SearchCard";
 
-const index = () => {
+const FinderPage = () => {
+  const router = useRouter();
+
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/");
+    }
+  });
+
   return (
     <>
-      <Toolbar />
-      <Box display={"flex"} justifyContent={"center"}>
-        <Card>
-          <CardContent>
-            <Typography variant="body1" gutterBottom fontWeight={500}>
-              We need some basic info to find the repository
-            </Typography>
-            <Stack spacing={3} my={3}>
-              <TextField label="Repository name" />
-              <TextField label="Repository owner" />
-            </Stack>
-            <Box display={"flex"} justifyContent={"center"}>
-              <Button variant={"contained"} color={"primary"}>
-                Search
-              </Button>
-            </Box>
-          </CardContent>
-        </Card>
-      </Box>
+      <Grid container spacing={1}>
+        <Grid item xs={3}>
+          <Box display={"flex"} justifyContent={"start"} m={3}>
+            <SearchCard />
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box m={3}>
+            <RepoDetail />
+          </Box>
+        </Grid>
+      </Grid>
     </>
   );
 };
 
-export default index;
+export default FinderPage;

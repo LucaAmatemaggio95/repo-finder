@@ -33,7 +33,7 @@ const LoginCard = () => {
                 color="primary"
                 size="large"
                 startIcon={<GitHub />}
-                onClick={() => signIn()}
+                onClick={() => signIn("github")}
               >
                 Login
               </Button>

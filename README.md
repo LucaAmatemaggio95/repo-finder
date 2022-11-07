@@ -15,6 +15,10 @@ Then inside the root folder create a `.env` file with the following variables
 
 The `GITHUB_ID` and the `GITHUB_SECRET` can be obtained inside GitHub > Profile > Settings > Developer settings > OAuth apps > create new
 
+Furthermore: `next-auth` needs a specific callback url with the following pattern
+
+> /api/auth/callback/[provider] (github in our case)
+
 these are needed from next-auth to authenticate the user against the GitHub OAuth flow
 
 The `GITHUB_PAT` can be obtained from the same path, just go into Personal Access Token
